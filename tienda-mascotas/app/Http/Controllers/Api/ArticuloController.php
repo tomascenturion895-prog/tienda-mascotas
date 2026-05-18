@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class ArticuloController extends Controller
@@ -33,7 +34,7 @@ class ArticuloController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Articulo $articulo)
     {
         return $articulo->load('categoria');
     }
@@ -41,7 +42,7 @@ class ArticuloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Articulo $articulo)
     {
         $articulo->update($request->all());
         return $articulo;
@@ -50,7 +51,7 @@ class ArticuloController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Articulo $articulo)
     {
         $articulo->delete();
         return response()->noContent();
